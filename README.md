@@ -1,12 +1,10 @@
-Nice guide to React as a framework
-
-[Framer Guide to React](https://www.framer.com/books/framer-guide-to-react/)
+# Week 5 day 2
 
 Chapsnat repo → for this!
 
 [ChatSnap Repo to fork and clone](https://github.com/Snap-Engineering-Academy-2022/chapsnat_2022)
 
-# Part B: Lab time with GiftedChat 🧪
+# Part A: Lab time with GiftedChat 🧪
 
 - Fork that chapsnat repo!
 - run `yarn install` to kickstart it (download all the dependencies)
@@ -58,15 +56,13 @@ Chapsnat repo → for this!
         - Try adding images and/or videos to your dummy messages.
     
 
-# Part C: Firebase Code-Along 🔥
-
-!!?? did we????? In the afternoon, we talked about Firebase, which is a Backend-As-A-Service. 
+# Part B: Firebase 🔥
 
 ## Firebase- Cloud Firestore!
 
 [Cloud Firestore | Firebase](https://firebase.google.com/docs/firestore)
 
-### Here's a summary of what we did during the code-along
+### You will code along with this lab, with your partner!
 
 ### 1. **Install firebase so you can use it in Expo!**
 
@@ -158,3 +154,289 @@ Start a collection, and call it `Chats`:
 Then we'll add the first document: 
 
 ![https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd6c6b7ce-151c-4634-978a-5f7833bcf361%2FUntitled.png?table=block&id=34abe38c-8c05-4a3f-9713-1ad7c78bb33d&spaceId=60b48455-9d72-4c97-9b1e-b7a326792bdf&width=1100&userId=&cache=v2](https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd6c6b7ce-151c-4634-978a-5f7833bcf361%2FUntitled.png?table=block&id=34abe38c-8c05-4a3f-9713-1ad7c78bb33d&spaceId=60b48455-9d72-4c97-9b1e-b7a326792bdf&width=1100&userId=&cache=v2)
+
+
+# End of week 5 day 2
+
+----------------------------
+
+# Week 5 day 3
+
+## Part A: Firebase Continued
+
+Keep this link handy for reference when doing Firestore stuff (make sure to choose "Node.js" in the code examples sections):
+
+[Cloud Firestore | Firebase](https://firebase.google.com/docs/firestore)
+
+# 1. Retrieve data from Firestore
+
+First, make sure you've completed the lab from yesterday. You should have a `firebase.js` file in your chapsnat folder, with your `firebaseConfig` details. You should also have a Chats collection in your online Firebase/Firestore console, and that collection should have at least one "chat document" that looks something like this:
+
+![https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd6c6b7ce-151c-4634-978a-5f7833bcf361%2FUntitled.png?table=block&id=339c803b-ddeb-42fb-a616-907a219169aa&spaceId=60b48455-9d72-4c97-9b1e-b7a326792bdf&width=2000&userId=b8cc0f5a-88d2-42e5-8739-9f94ccd628a6&cache=v2](https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd6c6b7ce-151c-4634-978a-5f7833bcf361%2FUntitled.png?table=block&id=339c803b-ddeb-42fb-a616-907a219169aa&spaceId=60b48455-9d72-4c97-9b1e-b7a326792bdf&width=2000&userId=b8cc0f5a-88d2-42e5-8739-9f94ccd628a6&cache=v2)
+
+Make sure you and your partner are both at this stage!
+
+### Confirm your import line at the top of your firebase.js file looks like this:
+
+```jsx
+import firebase from "firebase/app";
+```
+
+### Alright now let's get started!
+
+[Get data with Cloud Firestore | Firebase](https://firebase.google.com/docs/firestore/query-data/get-data#get_a_document)
+
+- First, import your Firestore from yesterday into the `App.js` file:
+    - `import db from "./firebase";`
+- Now, let's clear our `useEffect` function of all the dummy data we added, and add in some new code to retrieve data from our database:
+    
+    ```jsx
+    useEffect(() => {
+      db.collection("Chats")
+        .doc("myfirstchat")
+        .get()
+        .then((snapshot) => {
+          console.log(snapshot.id);
+          console.log(snapshot.data());
+        });
+    }, []);
+    ```
+    
+    - Discuss with your partner what's going here! `.collection` , `.doc` , `.get` , and `.then` . Look at that callback there! And also make sure to run the code and look in your console to see what you get!
+- Next, let's tweak this `useEffect` code to actually take that data we downloaded and use it in our app with `setMessages`. Discuss with your partner **where** the `setMessages` call should go, and **what** should be in it.
+- **[✅ CHECKPOINT]** You should have your dummy message from Firestore appear in your app! wow!
+    - Add another message into your chat doc in firestore, and make sure it appears in your app!
+    - Try to get at least one message downloaded from firestore to be a blue bubble! Remember that the `_id` needs to match. Watchout! The number 1 and the string "1" are not an exact match, for example.
+    - NB: you might see "Invalid Date". Don't worry about that for now, we'll fix it later.
+
+## Check in with an Instructor or coach once you're done with part 1!
+
+# 2. Send data to Firestore
+
+[Add data to Cloud Firestore | Firebase](https://firebase.google.com/docs/firestore/manage-data/add-data)
+
+First! Beware that we're about to potentially **lose all our dummy messages in a terrible accident!** Create a new chat document and use that for this section if you don't want to lose them.
+
+- Let's add some code to the beginning of `onSend` callback to upload our new messages to Firestore:
+    
+    ```jsx
+    db.collection("Chats").doc("myfirstchat").set({ messages: messages });
+    ```
+    
+    - Discuss again! What is `.set` doing? Why don't we need `.then` ?
+- Send a message and now go to your Firestore database dashboard
+    - **[✅ CHECKPOINT]** Wow! You should see the message appear in your dashboard.
+    - **BUT** your old messages disappeared!
+- And now send a few new messages, and refresh your React Native app page, as well as your Firestore database dashboard page.
+    - **UH OH!!!** What's the bug you're seeing?
+        - Answer:
+            
+            Only the latest message gets saved! We lose all the others.
+            
+    - [✨💪 **ACTION ITEM ☑️**]  **Discuss, then call an instructor over and discuss why you think you're seeing this bug**
+    - Add a `console.log(messages)` at the beginning of `onSend` callback and start to debug what's going on.
+    - **[🥅 GOAL 🏁] Now let's try to fix it!**
+
+		<details>
+		<summary>Hints:</summary>
+		
+		- might need to use `.update` instead of `.set`
+		- 👀 [https://firebase.google.com/docs/firestore/manage-data/add-data#update_elements_in_an_array](https://firebase.google.com/docs/firestore/manage-data/add-data#update_elements_in_an_array)
+                - You'll need to `import firebase from "firebase/app"` at the top of `App.js` in order to  `firebase.firestore.FieldValue.arrayUnion(...)`
+		</details>
+
+		<details>
+
+		<summary>Answer:</summary>
+
+		## Your final `onSend` code should look something like this:
+	
+		```jsx
+		const onSend = useCallback((messages = []) => {
+			db.collection("Chats")
+			.doc("myfirstchat")
+			.update({
+				// arrayUnion appends the message to the existing array
+				messages: firebase.firestore.FieldValue.arrayUnion(messages[0]),
+			});
+			setMessages((previousMessages) =>
+			GiftedChat.append(previousMessages, messages)
+			);
+		}, []);
+		```
+
+		</details>
+
+            
+
+# 3. Live Updates
+
+[Get realtime updates with Cloud Firestore | Firebase](https://firebase.google.com/docs/firestore/query-data/listen)
+
+This one is actually surprisingly easy! Let's revisit our `useEffect` function.
+
+- All we do is take this code:
+
+```jsx
+db.collection("Chats")
+  .doc("myfirstchat")
+  .get()
+  .then((snapshot) => {
+		...
+	}
+```
+
+- And replace it with this code:
+
+```jsx
+db.collection("Chats")
+  .doc("myfirstchat")
+  .onSnapshot((snapshot) => {
+    console.log("New Snapshot!");
+		...
+	}
+```
+
+- **[✅ CHECKPOINT]** Great! Now when you send messages, you should see "New Snapshot!" in your console.
+- **[✅ CHECKPOINT]** Now if you add a message in your Firestore database dashboard, it should appear immediately in your app **without having to refresh the app.**
+
+- There's one last thing to do. At some point we want to **stop listening** to updates. This is called "**unsubscribing**".
+    - Q: when do we want to stop listening? A: when we exit the chat view!
+    - Q: How do we know when we're exiting the chat view? A: Whenever a component gets "unmounted" (fancy React word for taken off screen), it runs a "**cleanup**" function.
+    - Q: ummm what? A: you can read more about unsubscribing and clean up functions here:
+        
+        [Using the Effect Hook - React](https://reactjs.org/docs/hooks-effect.html#example-using-hooks-1)
+        
+        [Get realtime updates with Cloud Firestore | Firebase](https://firebase.google.com/docs/firestore/query-data/listen#detach_a_listener)
+        
+    - Finally, your `useEffect` code should look something like this:
+        
+        ```jsx
+        useEffect(() => {
+          let unsubscribeFromNewSnapshots = db
+            .collection("Chats")
+            .doc("myfirstchat")
+            .onSnapshot((snapshot) => {
+              console.log("New Snapshot!");
+              setMessages(snapshot.data().messages);
+            });
+        
+          return function cleanupBeforeUnmounting() {
+            unsubscribeFromNewSnapshots();
+          };
+        }, []);
+        ```
+        
+
+## UPDATE HERE!! FINAL CODE FOR PART A LAB:
+
+[Snap-Engineering-Academy-2021/chapsnat](https://github.com/Snap-Engineering-Academy-2021/chapsnat/blob/main/App.js)
+
+---
+
+## Part B: Intro to React Navigation
+
+**To help us learn about the different types of Navigation in React, we'll be exploring 3 mini-projects in the browser, using Expo Snacks. Expo Snack works kind of like Replit but specifically for React Native code; it allows you to quickly view, run, and change React Native code in the browser.** 
+
+# 1. Explore Drawer Navigators
+
+**Click on the link below and click around the app in the right hand side. Open up the drawer navigation!**
+
+[DrawerNavDemo](https://snack.expo.io/@rjc45/drawernavdemo)
+
+- **[✨💬  DISCUSS]**  The side bar should link to both "Home" and "Notifications"! Can you find the line in the code where the Drawer Navigator is being defined?
+- **[✨💬  DISCUSS]** Can you find the lines in the code where HomeScreen is being defined? It should be a functional component (aka a function that returns a component).
+- **[✨💬  DISCUSS]** Can you find the line in the code where NotificationsScreen is being defined? It should be a functional component (aka a function that returns a component).
+
+**Now we're going to look at the EXACT same code ...except this time you'll see that some of it was moved into a SCREENS folder.** 
+
+[Drawer Demo](https://snack.expo.io/@jennyhansolo/drawer-demo)
+
+- **[✨💬  DISCUSS]** Why would we do this??? Why would we bother moving some of the code from App.js into a separate folder?
+    - Answer
+        
+        Decomposition! This way our App.js is a lot less cluttered. It only handles the high-level navigation now. 
+        
+- **[✨💬  DISCUSS]** Now let's do the same scavenger hunt as above: Can you find the line in the code where the Drawer Navigator is being defined?
+    - Answer
+        
+        It's in the `App.js` file! This is going to be the parent component of our entire app. It's the first file that gets rendered, and it will be in charge of importing the other files/screens that will get rendered. 
+        
+- **[✨💬  DISCUSS]**  Can you find the file where HomeScreen is being defined? It should be a functional component (aka a function that returns a component).
+    - Answer
+        
+        It's in the `screens/HomeScreen.js`! Notice however that in order for `App.js` to use this screen, it needs to be imported at the very top of `App.js` as well. 
+        
+- **[✨💬  DISCUSS]**  Can you find the file where NotificationsScreen is being defined? It should be a functional component (aka a function that returns a component).
+    - Answer
+        
+        It's in the `screens/NotificationsScreen.js`! Notice however that in order for `App.js` to use this screen, it needs to be imported at the very top of `App.js` as well. 
+        
+- [✨💪 **ACTION ITEM ☑️**  ]  Currently, there's no way for you to open the navigation drawer from the Notifications Screen. That's a bummer! Add a button to `screens/NotificationsScreen.js` so that you can open the side bar from the Notifications Screen, the same way you can from the Home Screen.
+    - Code to check your work
+        <details>
+		<summary>Make sure you talk to your teammates and instructors first before peeking here!</summary>
+
+		## Are you sure you already asked for help? Ok fine... go ahead and check out the code.
+			
+		```jsx
+		//screens/NotificationsScreen.js
+		import * as React from 'react';
+		import { Text, View, StyleSheet, Image, Button } from 'react-native';
+		
+		export default function NotificationsScreen({ navigation }) {
+			return (
+			<View style={styles.screenContainer}>
+				<Text style={styles.screenText}> Notifications! </Text>
+				<Button title="Open side bar" onPress={() => navigation.openDrawer()} />
+		
+			</View>
+			);
+		}
+		
+		const styles = StyleSheet.create({
+			screenContainer: {
+			flex: 1, 
+			alignItems: 'center', 
+			justifyContent: 'center'
+			},
+			screenText: {
+			fontSize: 32,
+			},
+		});
+		```
+
+		</details>
+                
+
+# 2. Explore Tab Navigators
+
+Tab Navigators are where it's at! We definitely want one of these in our `Chapsnat` repo. Let's click on this Snack and see what we find: 
+
+[Tab Navigator Lab](https://snack.expo.io/@jennyhansolo/tab-navigator-lab)
+
+- [✨💪 **ACTION ITEM ☑️**  ]  There's an error!!! What's up with that? 👀  Debug the `App.js` file so that `HomeScreen`, `DetailsScreen`, and `SettingsScreen` are properly imported!
+
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/319a54e0-b5f5-405b-9aee-7573db1f60b0/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/319a54e0-b5f5-405b-9aee-7573db1f60b0/Untitled.png)
+
+- Code to check your work
+    - Make sure you talk to your teammates and instructors first before peeking here!
+        - Are you sure you already asked for help? Ok fine... go ahead and check out the code.
+            
+            ```jsx
+            import HomeScreen from './screens/HomeScreen';
+            import SettingsScreen from './screens/SettingsScreen';
+            import DetailsScreen from './screens/DetailsScreen';
+            ```
+            
+- [✨💪 **ACTION ITEM ☑️**  ] You may notice that `SettingsScreen.js` function looks slightly different from `HomeScreen.js` function ... can you spot the difference?
+    - They're actually two different ways of exporting a functional component! Change `SettingsScreen` to match the way that `HomeScreen` and `DetailsScreen` are being defined... just for consistency's sake!
+    - Code to check your work
+
+
+
+### Further Studies / resources:
+
+Nice guide to React as a framework
+
+[Framer Guide to React](https://www.framer.com/books/framer-guide-to-react/)

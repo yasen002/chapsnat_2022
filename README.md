@@ -22,8 +22,6 @@ Chapsnat repo → for this!
     - [https://github.com/FaridSafi/react-native-gifted-chat](https://github.com/FaridSafi/react-native-gifted-chat)
     - Discuss: Look at the example, and all the props. So many props!
 - **Now, using the Example code in the README as a guide, import the GiftedChat component into your `App.js`, and put the component in your render function (which is the `return` statement). Run the code - try it out! Wow!**
-    - If you need some help, take a look at Jenny's 5-min chat code from yesterday:
-        - [https://github.com/Snap-Engineering-Academy-2021/5minchat/blob/main/App.js](https://github.com/Snap-Engineering-Academy-2021/5minchat/blob/main/App.js)
     - Discuss: what is going on? What is the `messages` state? What are the `messages`, `onSend`, and `user` props?
     - `useCallback` is another hook! You can read more about it if you like, but for now just treat it like a normal arrow function callback with a fancy wrapper.
     - Try removing `setMessages` from the callback and run the code again. What happens? What’s changed?
@@ -417,23 +415,55 @@ Tab Navigators are where it's at! We definitely want one of these in our `Chapsn
 
 - [✨💪 **ACTION ITEM ☑️**  ]  There's an error!!! What's up with that? 👀  Debug the `App.js` file so that `HomeScreen`, `DetailsScreen`, and `SettingsScreen` are properly imported!
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/319a54e0-b5f5-405b-9aee-7573db1f60b0/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/319a54e0-b5f5-405b-9aee-7573db1f60b0/Untitled.png)
+![https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F319a54e0-b5f5-405b-9aee-7573db1f60b0%2FUntitled.png?table=block&id=edf88131-0734-4ef0-a4d0-80b7b7a22763&spaceId=60b48455-9d72-4c97-9b1e-b7a326792bdf&width=610&userId=b8cc0f5a-88d2-42e5-8739-9f94ccd628a6&cache=v2](https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F319a54e0-b5f5-405b-9aee-7573db1f60b0%2FUntitled.png?table=block&id=edf88131-0734-4ef0-a4d0-80b7b7a22763&spaceId=60b48455-9d72-4c97-9b1e-b7a326792bdf&width=610&userId=b8cc0f5a-88d2-42e5-8739-9f94ccd628a6&cache=v2)
 
 - Code to check your work
-    - Make sure you talk to your teammates and instructors first before peeking here!
-        - Are you sure you already asked for help? Ok fine... go ahead and check out the code.
-            
-            ```jsx
-            import HomeScreen from './screens/HomeScreen';
-            import SettingsScreen from './screens/SettingsScreen';
-            import DetailsScreen from './screens/DetailsScreen';
-            ```
+    <details>
+	<summary>Make sure you talk to your teammates and instructors first before peeking here!</summary>
+
+	## Are you sure you already asked for help? Ok fine... go ahead and check out the code.
+	```jsx
+	import HomeScreen from './screens/HomeScreen';
+	import SettingsScreen from './screens/SettingsScreen';
+	import DetailsScreen from './screens/DetailsScreen';
+	```
+	</details>
             
 - [✨💪 **ACTION ITEM ☑️**  ] You may notice that `SettingsScreen.js` function looks slightly different from `HomeScreen.js` function ... can you spot the difference?
     - They're actually two different ways of exporting a functional component! Change `SettingsScreen` to match the way that `HomeScreen` and `DetailsScreen` are being defined... just for consistency's sake!
-    - Code to check your work
+- Code to check your work
+	<details>
+	<summary>Make sure you talk to your teammates and instructors first before peeking here!</summary>
 
+	```jsx
+	import * as React from 'react';
+	import { Text, View, StyleSheet, Image } from 'react-native';
 
+	function SettingsScreen() {
+	return (
+	<View style={styles.screenContainer}>
+		<Text style={styles.screenText}>Settings!</Text>
+	</View>
+	);
+	}
+
+	const styles = StyleSheet.create({
+		screenContainer: {
+			flex: 1, 
+			justifyContent: 'center', 
+			alignItems: 'center',
+		},
+		screenText: {
+			fontSize: 32,
+		},
+	});
+
+	export default SettingsScreen;
+	```
+	</details>
+
+# End of Week 5 day 3
+-------------------------------
 
 ### Further Studies / resources:
 

@@ -96,7 +96,7 @@ You'll need to enable Cloud Firestore with the following steps:
 2. Click **Create database** in the Cloud Firestore pane.
 3. Select the **Start in test mode** option, then click **Next** after reading the disclaimer about the security rules.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f744744e-b63c-49b3-a122-eba83d04f830/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f744744e-b63c-49b3-a122-eba83d04f830/Untitled.png)
+![https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ff744744e-b63c-49b3-a122-eba83d04f830%2FUntitled.png?table=block&id=932225b8-0b60-49ea-b5f1-4e129fd2e1dd&spaceId=60b48455-9d72-4c97-9b1e-b7a326792bdf&width=2000&userId=&cache=v2](https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ff744744e-b63c-49b3-a122-eba83d04f830%2FUntitled.png?table=block&id=932225b8-0b60-49ea-b5f1-4e129fd2e1dd&spaceId=60b48455-9d72-4c97-9b1e-b7a326792bdf&width=2000&userId=&cache=v2)
 
 Test mode ensures that we can freely write to the database during development. We'll make our database more secure later on in this codelab.
 
@@ -104,7 +104,7 @@ d. Make sure you select your data to be stored close to where you are physically
 
 us-west2 is LA. 
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/306dc7db-c488-4ade-857c-80a0457b5bcb/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/306dc7db-c488-4ade-857c-80a0457b5bcb/Untitled.png)
+![https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F306dc7db-c488-4ade-857c-80a0457b5bcb%2FUntitled.png?table=block&id=d8569413-37e7-4328-8144-0ce64d44f442&spaceId=60b48455-9d72-4c97-9b1e-b7a326792bdf&width=2000&userId=&cache=v2](https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F306dc7db-c488-4ade-857c-80a0457b5bcb%2FUntitled.png?table=block&id=d8569413-37e7-4328-8144-0ce64d44f442&spaceId=60b48455-9d72-4c97-9b1e-b7a326792bdf&width=2000&userId=&cache=v2)
 
 <aside>
 ☝🏾 Please be careful to enable Cloud Firestore and NOT the Realtime Database for this codelab. Both options are on the same page, but you need to enable Cloud Firestore, which is in the top section of the page.
@@ -119,15 +119,15 @@ Go to the Project Overview Page.
 
 1. Select the web app option. Even though we're technically not making a web app, React Native will fall under this category! 
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4037a265-d14e-4b14-b5fd-6c799ff2d693/Untitled_presentation_(1).png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4037a265-d14e-4b14-b5fd-6c799ff2d693/Untitled_presentation_(1).png)
+![https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F4037a265-d14e-4b14-b5fd-6c799ff2d693%2FUntitled_presentation_(1).png?table=block&id=d548a4fe-21c4-4a33-9b38-13c43e1be948&spaceId=60b48455-9d72-4c97-9b1e-b7a326792bdf&width=2000&userId=&cache=v2](https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F4037a265-d14e-4b14-b5fd-6c799ff2d693%2FUntitled_presentation_(1).png?table=block&id=d548a4fe-21c4-4a33-9b38-13c43e1be948&spaceId=60b48455-9d72-4c97-9b1e-b7a326792bdf&width=2000&userId=&cache=v2)
 
  b. Register the app with the nickname **Smapchat**. Click **Register app**.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/051f57ad-00c3-4d72-9797-485d80e3586f/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/051f57ad-00c3-4d72-9797-485d80e3586f/Untitled.png)
+![https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F051f57ad-00c3-4d72-9797-485d80e3586f%2FUntitled.png?table=block&id=6b1500bf-e81b-4dbb-8b20-ba58bb8421fe&spaceId=60b48455-9d72-4c97-9b1e-b7a326792bdf&width=1340&userId=&cache=v2](https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F051f57ad-00c3-4d72-9797-485d80e3586f%2FUntitled.png?table=block&id=6b1500bf-e81b-4dbb-8b20-ba58bb8421fe&spaceId=60b48455-9d72-4c97-9b1e-b7a326792bdf&width=1340&userId=&cache=v2)
 
 c. You'll see some code snippets! We'll copy the Firebase SDK code into our React Native app.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8a882076-423f-4378-b292-3a6f250b4d04/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8a882076-423f-4378-b292-3a6f250b4d04/Untitled.png)
+![https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F8a882076-423f-4378-b292-3a6f250b4d04%2FUntitled.png?table=block&id=544c22a0-3d8f-4ccd-85fc-fd6e159edf95&spaceId=60b48455-9d72-4c97-9b1e-b7a326792bdf&width=2000&userId=&cache=v2](https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F8a882076-423f-4378-b292-3a6f250b4d04%2FUntitled.png?table=block&id=544c22a0-3d8f-4ccd-85fc-fd6e159edf95&spaceId=60b48455-9d72-4c97-9b1e-b7a326792bdf&width=2000&userId=&cache=v2)
 
 ### 6. Set up Firebase on your React Native app.
 
@@ -153,8 +153,8 @@ On the lefthand bar of the Firebase Console, click on Cloud Firestore.
 
 Start a collection, and call it `Chats`: 
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0e45c958-39ec-42e1-9a28-d866264f100b/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0e45c958-39ec-42e1-9a28-d866264f100b/Untitled.png)
+![https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F0e45c958-39ec-42e1-9a28-d866264f100b%2FUntitled.png?table=block&id=0e06693d-89fd-471f-baf3-2203476b1357&spaceId=60b48455-9d72-4c97-9b1e-b7a326792bdf&width=2000&userId=&cache=v2](https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F0e45c958-39ec-42e1-9a28-d866264f100b%2FUntitled.png?table=block&id=0e06693d-89fd-471f-baf3-2203476b1357&spaceId=60b48455-9d72-4c97-9b1e-b7a326792bdf&width=2000&userId=&cache=v2)
 
 Then we'll add the first document: 
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d6c6b7ce-151c-4634-978a-5f7833bcf361/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d6c6b7ce-151c-4634-978a-5f7833bcf361/Untitled.png)
+![https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd6c6b7ce-151c-4634-978a-5f7833bcf361%2FUntitled.png?table=block&id=34abe38c-8c05-4a3f-9713-1ad7c78bb33d&spaceId=60b48455-9d72-4c97-9b1e-b7a326792bdf&width=1100&userId=&cache=v2](https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd6c6b7ce-151c-4634-978a-5f7833bcf361%2FUntitled.png?table=block&id=34abe38c-8c05-4a3f-9713-1ad7c78bb33d&spaceId=60b48455-9d72-4c97-9b1e-b7a326792bdf&width=1100&userId=&cache=v2)

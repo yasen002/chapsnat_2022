@@ -231,39 +231,41 @@ First! Beware that we're about to potentially **lose all our dummy messages in a
             
             Only the latest message gets saved! We lose all the others.
             
-    - [✨💪 **ACTION ITEM ☑️**]  **Discuss, then call an instructor over and discuss why you think you're seeing this bug**
+    - [✨💪 **ACTION ITEM ☑️**]  **Discuss, then call an instructor or coach over and discuss why you think you're seeing this bug**
     - Add a `console.log(messages)` at the beginning of `onSend` callback and start to debug what's going on.
     - **[🥅 GOAL 🏁] Now let's try to fix it!**
+    #### You absolutely need to try to do this on your own before looking at the answer! It is there to compare your work to, not to copy. Take a peek at the hints right away if need be.
 
-		<details>
-		<summary>Hints:</summary>
-		
-		- might need to use `.update` instead of `.set`
-		- 👀 [https://firebase.google.com/docs/firestore/manage-data/add-data#update_elements_in_an_array](https://firebase.google.com/docs/firestore/manage-data/add-data#update_elements_in_an_array)
-                - You'll need to `import firebase from "firebase/app"` at the top of `App.js` in order to  `firebase.firestore.FieldValue.arrayUnion(...)`
-		</details>
 
-		<details>
+    <details>
+    <summary>Hints:</summary>
+    
+    - might need to use `.update` instead of `.set`
+    - 👀 [https://firebase.google.com/docs/firestore/manage-data/add-data#update_elements_in_an_array](https://firebase.google.com/docs/firestore/manage-data/add-data#update_elements_in_an_array)
+            - You'll need to `import firebase from "firebase/app"` at the top of `App.js` in order to  `firebase.firestore.FieldValue.arrayUnion(...)`
+    </details>
 
-		<summary>Answer:</summary>
+    <details>
 
-		## Your final `onSend` code should look something like this:
-	
-		```jsx
-		const onSend = useCallback((messages = []) => {
-			db.collection("Chats")
-			.doc("myfirstchat")
-			.update({
-				// arrayUnion appends the message to the existing array
-				messages: firebase.firestore.FieldValue.arrayUnion(messages[0]),
-			});
-			setMessages((previousMessages) =>
-			GiftedChat.append(previousMessages, messages)
-			);
-		}, []);
-		```
+    <summary>Answer:</summary>
 
-		</details>
+    ## Your final `onSend` code should look something like this:
+
+    ```jsx
+    const onSend = useCallback((messages = []) => {
+        db.collection("Chats")
+        .doc("myfirstchat")
+        .update({
+            // arrayUnion appends the message to the existing array
+            messages: firebase.firestore.FieldValue.arrayUnion(messages[0]),
+        });
+        setMessages((previousMessages) =>
+        GiftedChat.append(previousMessages, messages)
+        );
+    }, []);
+    ```
+
+    </details>
 
             
 
@@ -464,6 +466,29 @@ Tab Navigators are where it's at! We definitely want one of these in our `Chapsn
 
 # End of Week 5 day 3
 -------------------------------
+# Week 5 day 4
+
+# Part A: Stack Navigator Lab
+
+[Stack Navigator Lab](https://github.com/Snap-Engineering-Academy-2022/Stack-Navigator-Lab)
+
+**🌴Optional Resources**
+
+- React native crash course: [https://www.reactnative.express/](https://www.reactnative.express/)
+- React Navigation documentation for route.params [https://reactnavigation.org/docs/params](https://reactnavigation.org/docs/params)
+
+---
+
+# Part B: Login and Signup Lab
+
+[Login & Sign up Lab](https://github.com/Snap-Engineering-Academy-2022/Login-and-Signup-Lab)
+
+**🌴Optional Resources**
+
+- Firebase documentation for currUser, signInWithEmailAndPassword, createUserWithEmailAndPassword: [https://firebase.google.com/docs/auth/web/manage-users](https://firebase.google.com/docs/auth/web/manage-users) and [https://firebase.google.com/docs/auth/web/password-auth](https://firebase.google.com/docs/auth/web/password-auth)
+
+# End of Week 5 day 4
+--------------------
 
 ### Further Studies / resources:
 

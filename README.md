@@ -1,12 +1,9 @@
 # Week 5 day 2
 
-Chapsnat repo → for this!
-
-[ChatSnap Repo to fork and clone](https://github.com/Snap-Engineering-Academy-2022/chapsnat_2022)
-
 # Part A: Lab time with GiftedChat 🧪
 
-- Fork that chapsnat repo!
+- Fork this chapsnat repo!
+- Clone your forked version
 - run `yarn install` to kickstart it (download all the dependencies)
     - Discuss: why do we need to do this? What exactly is it doing?
 - run `expo start` to make sure it's working. Should just be a "starter" React Native app.
@@ -450,7 +447,7 @@ Tab Navigators are where it's at! We definitely want one of these in our `Chapsn
 	}
 
 	const styles = StyleSheet.create({
-		screenContainer: {
+		screenContainer: {x
 			flex: 1, 
 			justifyContent: 'center', 
 			alignItems: 'center',
@@ -470,7 +467,7 @@ Tab Navigators are where it's at! We definitely want one of these in our `Chapsn
 
 # Part A: Stack Navigator Lab
 
-[Stack Navigator Lab](https://github.com/Snap-Engineering-Academy-2022/Stack-Navigator-Lab)
+[Stack Navigator Lab](https://github.com/Snap-Engineering-Academy-2022/Stack-Navigator-Lab) 
 
 **🌴Optional Resources**
 

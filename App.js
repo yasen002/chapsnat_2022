@@ -1,62 +1,37 @@
-//App.js
+// import React from 'react';
+// import { Text, View } from 'react-native';
 
-import React, { useEffect, useCallback, useState } from "react";
-import { StyleSheet } from "react-native";
-import 'react-native-gesture-handler';
-import { GiftedChat } from "react-native-gifted-chat";
-import db from "./firebase";
-import { collection, getDocs, onSnapshot, doc, updateDoc, arrayUnion } from 'firebase/firestore';
+// export default function App() {
+//     return (
+//         <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+//           <Text>
+//             Try editing me! 🎉
+//           </Text>
+//         </View>
+//       );
+// }
 
 
-function App() {
+import * as React from 'react';
+import { Text, View, StyleSheet, Button } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-  const [messages, setMessages] = useState([]);
+import HomeScreen from './screens/HomeScreen';
+import ChatScreen from './screens/ChatScreen';
 
-  useEffect(() => {
-    let unsubscribeFromNewSnapshots = onSnapshot(doc(db, "Chats", "myChat1"), (snapshot) => {
-      console.log("New Snapshot! ", snapshot.data().messages);
-      setMessages(snapshot.data().messages);
-    });
-  
-    return function cleanupBeforeUnmounting() {
-      unsubscribeFromNewSnapshots();
-    };
-  }, []);
-  
-  const onSend = useCallback(async (messages = []) => {
-    await updateDoc(doc(db, "Chats", "myChat1"), {
-      messages: arrayUnion(messages[0])
-    });
-    setMessages(previousMessages => GiftedChat.append(previousMessages, messages))
-  }, [])
+const Stack = createStackNavigator();
 
+export default function App() {
   return (
-    <GiftedChat
-		messages={messages}
-		onSend={(messages) => onSend(messages)}
-		user={{
-			// current "blue bubble" user
-			_id: "1",
-			name: "Ashwin",
-			avatar: "https://placeimg.com/140/140/any",
-		}}
-		inverted={true}
-		showUserAvatar={true}
-		renderUsernameOnMessage={true}
-	/>
+    <NavigationContainer>
+      <Stack.Navigator >
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Chat" component={ChatScreen} />
+        {/* <Stack.Screen name="ScreenOne" component={ScreenOne} />
+        <Stack.Screen name="ScreenTwo" component={ScreenTwo} />
+        <Stack.Screen name="ScreenToImplement" component={ScreenToImplement} initialParams={{message: 'Hi there!'}}  /> */}
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-  },
-  item: {
-    padding: 10,
-    fontSize: 18,
-    height: 44,
-  },
-});
-
-export default App;

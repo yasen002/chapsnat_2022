@@ -1,12 +1,16 @@
+//App.js
+
+import React, { useEffect, useCallback, useState } from "react";
+import { StyleSheet } from "react-native";
+import 'react-native-gesture-handler';
+import { GiftedChat } from "react-native-gifted-chat";
 import db from "./firebase";
-import { onSnapshot ,setDoc, updateDoc, doc, arrayUnion} from 'firebase/firestore';
-import React, { useState, useCallback, useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { GiftedChat } from 'react-native-gifted-chat';
+import { collection, getDocs, onSnapshot, doc, updateDoc, arrayUnion } from 'firebase/firestore';
 
 
-export default function App() {
-  const [ messages, setMessages ] = useState([]);
+function App() {
+
+  const [messages, setMessages] = useState([]);
 
   useEffect(() => {
     let unsubscribeFromNewSnapshots = onSnapshot(doc(db, "Chats", "myChat1"), (snapshot) => {
@@ -18,40 +22,41 @@ export default function App() {
       unsubscribeFromNewSnapshots();
     };
   }, []);
-
-
+  
   const onSend = useCallback(async (messages = []) => {
-    console.log('the new message')
     await updateDoc(doc(db, "Chats", "myChat1"), {
       messages: arrayUnion(messages[0])
     });
     setMessages(previousMessages => GiftedChat.append(previousMessages, messages))
-}, [])
-
+  }, [])
 
   return (
     <GiftedChat
-      messages={messages}
-      onSend= {msg => onSend(msg)}
-      user={{
-        _id: "1",
-        name: 'Yasen',
-        avatar: "https://picsum.photos/200"
-      }}
-      placeholder={"please type something here..."}
-      showUserAvatar={true}
-      alwaysShowSend={true}
-      renderUsernameOnMessage={true}
-    />
+		messages={messages}
+		onSend={(messages) => onSend(messages)}
+		user={{
+			// current "blue bubble" user
+			_id: "1",
+			name: "Ashwin",
+			avatar: "https://placeimg.com/140/140/any",
+		}}
+		inverted={true}
+		showUserAvatar={true}
+		renderUsernameOnMessage={true}
+	/>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+  },
+  item: {
+    padding: 10,
+    fontSize: 18,
+    height: 44,
   },
 });
 
-
+export default App;

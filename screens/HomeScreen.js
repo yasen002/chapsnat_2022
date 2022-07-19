@@ -10,7 +10,7 @@ export default function HomeScreen({ navigation }) {
 	    onPress={() => navigation.navigate("Chat")}
 	  >
           	<Text >This is Home Screen </Text>
-          </TouchableOpacity>
+          </TouchableOpacity> 
     </View>
   );
 }

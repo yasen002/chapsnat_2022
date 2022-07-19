@@ -1,11 +1,26 @@
 import { Text, View, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";	
 import {useState} from "react"
-
 
 export default function LoginScreen({navigation}) {
 	const [email, setEmail] = useState();
 	const [password, setPassword] = useState();
+
+	const auth = getAuth();
+
+	async function handleSubmit() {
+		console.log("handle submit envoked!!")
+
+		await createUserWithEmailAndPassword(auth, email, password)
+		.then((userCredential) => {
+			const user = userCredential.user;
+			auth.currentUser = user;
+		})
+		.catch((error) => {
+			const errorCode = error.code;
+			const errorMessage = error.message;
+		});
+	}
 
 	return (
 		<>
@@ -25,9 +40,8 @@ export default function LoginScreen({navigation}) {
 					onChangeText={(password) => setPassword(password)}
 				/>
 			</View>
-			
 			<TouchableOpacity style={styles.loginBtn} onPress={() => {
-				{/* what do you think will go here? */}
+				handleSubmit();
 			}}>
 				<Text style={styles.loginText}>Signup</Text>
 			</TouchableOpacity>

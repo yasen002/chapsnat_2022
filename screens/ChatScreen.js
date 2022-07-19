@@ -1,42 +1,32 @@
 import React, { useState, useCallback, useEffect } from "react";
-import { GiftedChat } from "react-native-gifted-chat";
-import db from "./firebase";
-import firebase from "firebase/app";
+import { FlatList, Text, View, TouchableOpacity, StyleSheet } from "react-native";
+
 
 export default function ChatScreen({ navigation }) {
-  const [messages, setMessages] = useState([]);
-
-    useEffect(() => {
-    let unsubscribeFromNewSnapshots = onSnapshot(doc(db, "Chats", "myChat1"), (snapshot) => {
-      console.log("New Snapshot! ", snapshot.data().messages);
-      setMessages(snapshot.data().messages);
-    });
-  
-    return function cleanupBeforeUnmounting() {
-      unsubscribeFromNewSnapshots();
-    };
-  }, []);
-
-  const onSend = useCallback(async (messages = []) => {
-    await updateDoc(doc(db, "Chats", "myChat1"), {
-      messages: arrayUnion(messages[0])
-    });
-    setMessages(previousMessages => GiftedChat.append(previousMessages, messages))
-  }, []);
+ 
 
   return (
-    <GiftedChat
-      messages={messages}
-      onSend={(messages) => onSend(messages)}
-      user={{
-        // current "blue bubble" user
-        _id: "1",
-        name: "Ashwin",
-        avatar: "https://placeimg.com/140/140/any",
-      }}
-      inverted={true}
-      showUserAvatar={true}
-      renderUsernameOnMessage={true}
-    />
+    <View style={styles.container}>
+	  <TouchableOpacity
+	    onPress={() => navigation.navigate("Home")}
+	  >
+          	<Text >This is Chat Screen </Text>
+          </TouchableOpacity>
+    </View>
   );
 }
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: 'center',
+    justifyContent:'center'
+  },
+  item: {
+    padding: 10,
+    fontSize: 18,
+    height: 44,
+  },
+});

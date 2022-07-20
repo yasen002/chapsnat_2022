@@ -8,7 +8,7 @@ export default function ChatScreen({ navigation }) {
   const [messages, setMessages] = useState([]);
 
     useEffect(() => {
-    let unsubscribeFromNewSnapshots = onSnapshot(doc(db, "Chats", "myfirstchat"), (snapshot) => {
+    let unsubscribeFromNewSnapshots = onSnapshot(doc(db, "Chats", "myChat1"), (snapshot) => {
       console.log("New Snapshot! ", snapshot.data().messages);
       setMessages(snapshot.data().messages);
     });
@@ -19,7 +19,7 @@ export default function ChatScreen({ navigation }) {
   }, []);
 
   const onSend = useCallback(async (messages = []) => {
-    await updateDoc(doc(db, "Chats", "myfirstchat"), {
+    await updateDoc(doc(db, "Chats", "myChat1"), {
       messages: arrayUnion(messages[0])
     });
     setMessages(previousMessages => GiftedChat.append(previousMessages, messages))

@@ -1,6 +1,6 @@
 import { Text, View, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 import {useState} from "react"
-import { getAuth } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 export default function LoginScreen({navigation}) {
 	const [email, setEmail] = useState();
 	const [password, setPassword] = useState();
@@ -17,6 +17,7 @@ export default function LoginScreen({navigation}) {
 		.catch((error) => {
 			const errorCode = error.code;
 			const errorMessage = error.message;
+			console.log("error from LgoinScreen.js: ", errorMessage, errorCode)
 		});
 	}
 
